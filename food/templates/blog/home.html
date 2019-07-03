@@ -1,0 +1,12 @@
+{% extends "page/page.html" %}
+{% block title %}Trang chủ{% endblock %}
+{% block content %}
+    <div style="position:relative; opacity:.95;">
+      {% include 'blog/list.html' %}
+    </div>
+    <br />
+    <div>
+      {% include 'page/paginator.html' %}
+    </div>
+{% endblock %}
+

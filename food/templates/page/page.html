@@ -1,0 +1,65 @@
+{% url 'blog:home' as home_url %}
+{% url 'blog:food_list' as list_food_url %}
+{% url 'blog:list_food_all' as list_food_all_url %}
+{% url 'login' as login_url %}
+{% url 'register' as register_url %}
+{% url 'logout' as logout_url %}
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        {% load staticfiles %}
+        <!-- Custom fonts for this template -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="{% static "css/a.css" %}" />
+        <link rel="shortcut icon" href="{% static 'img/ct.png' %}" />
+        <title>{% block title %}{% endblock %}</title>
+        <script>
+            $(document).ready(function () {
+                $("#navbar").btrmenu();
+            });
+        </script>
+        {% block head_extra %} {% endblock head_extra %}
+    </head>
+    <body>
+        <div style="margin-top: 66px">
+            {% include "page/menu.html" %}
+        </div>
+        <div class="container-fluid " style="background-image: url('{% static "img/nen.gif" %}'); background-repeat: no-repeat; background-attachment:fixed; background-size: cover;" >
+            <br />
+            <br />
+            <div class="row content" style="min-height: 880px; height: auto;">
+                <div class="col-0 col-sm-0 col-md-2 col-lg-2 col-xl-2" >
+                </div>
+                <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 rounded ">
+                    {% block content %}
+                    {% endblock %}             
+                    <br />
+                    {% block comment %}
+                    {% endblock %}
+                </div>      
+                <div class="col-0 col-sm-0 col-md-2 col-lg-2 col-xl-2" >
+                </div>
+            </div>
+        </div>
+        <footer class="container-fluid text-center">
+          <h3>Liên hệ các thành viên trong nhóm:</h3>
+          <hr />
+          <h5>Nguyễn Mạnh Cường</h5>
+          <p>sđt : 0396745838</p>
+          <p>email : manhcuong88c@gmail.com</p>
+          <hr />
+          <h5>Lưu Văn Huy</h5>
+          <p>sđt : 0394574296</p>
+          <p>email : huycoi_it@gmail.com</p>
+        </footer>
+    </body>
+</html>
