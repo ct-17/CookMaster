@@ -23,9 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '!4@r0jvxs#fx+(qo%6993%yrc2nd*&uw!31*k_aiqr%p9c=s+w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+DEBUG = False
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -75,7 +74,18 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'food.wsgi.application'
+ASGI_APPLICATION = 'food.routing.application'
 
+
+ASGI_APPLICATION = 'food.routing.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('103.81.86.188', 6379)],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
@@ -132,8 +142,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static_ct"),
 ]
 
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_nmc", "static_root")
+STATIC_ROOT = os.path.join(BASE_DIR, "static_nmc", "static_root")
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_nmc", "media_root")
+MEDIA_ROOT = os.path.join(BASE_DIR, "static_nmc", "media_root")
